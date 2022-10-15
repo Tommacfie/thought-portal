@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx kill-port 3001 && concurrently \"cd client && npm run start\" \" cd server && npm run start\"",
+    "start": "npx kill-port 3000 && concurrently \"cd client && npm run start\" \" cd server && npm run start\"",
     "server":"cd server && npm run start",
     "client":"cd client && npm run start"
   },
