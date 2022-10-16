@@ -1,11 +1,13 @@
-import { Schema, model } from 'mongoose';
+import mongoose from './index';
+const { Schema, model } = mongoose;
+import { IThought } from '../utils/interfaces';
 
-const thoughtSchema = new Schema({
-  name: String,
-  email: String,
-  tags:[String]
+const thoughtSchema = new Schema<IThought>({
+  title: String,
+  body: String,
+  tags: [String],
 });
 
-const Thought = model('thought', thoughtSchema);
+const Thought = model<IThought>('thought', thoughtSchema);
 
 export default Thought;
