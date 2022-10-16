@@ -1,9 +1,13 @@
-import { Router } from "express";
-import { getThoughts, createThought } from "./controllers/thought.controller";
+import { Router } from 'express';
+import { getThoughts, createThought } from './controllers/thought.controller';
+import { getUsers, createUser } from './controllers/user.controller';
 
-const router = Router()
+const router = Router();
 
-router.get('/thought', getThoughts)
-router.post('/thought', createThought)
+router.get('/users', getUsers);
+router.post('/user', createUser);
 
-export default router
+router.get('/thoughts', getThoughts);
+router.post('/thought', createThought);
+
+export default router;
