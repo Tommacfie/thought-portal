@@ -1,4 +1,5 @@
 import { server } from '../config';
+import { TThoughtRecord } from '../types/types';
 
 export const getThoughtRecords = async () => {
   try {
@@ -6,6 +7,20 @@ export const getThoughtRecords = async () => {
     const thoughtRecords = await response.json();
     console.log(thoughtRecords);
     return thoughtRecords;
+  } catch (error) {
+    console.log('Error:', error);
+  }
+};
+
+export const postThoughtRecord = async (thoughtRecord: TThoughtRecord) => {
+  const postBody = thoughtRecord;
+  try {
+    const response = await fetch(server + '/thoughtRecord', {
+      method: 'POST',
+      body: JSON.stringify(postBody),
+    });
+    const thoughtRecord = await response.json();
+    return thoughtRecord;
   } catch (error) {
     console.log('Error:', error);
   }
