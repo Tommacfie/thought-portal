@@ -1,4 +1,4 @@
-import { EnumThoughtRecordTablePlaceHolder } from '../../types/types';
+import { EnumThoughtRecordTablePlaceHolder } from '../../types/enums';
 import ThoughtRecordTableCell from './ThoughtRecordTableCell';
 import ThoughtRecordTableHeader from './ThoughtRecordTableHeader';
 
