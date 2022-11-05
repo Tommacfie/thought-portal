@@ -1,13 +1,23 @@
 import { Router } from 'express';
-import { getThoughts, createThought } from './controllers/thought.controller';
-import { getUsers, createUser } from './controllers/user.controller';
+import { getMoods, createMood } from './controllers/moodController';
+import {
+  createThoughtRecord,
+  getThoughtRecords,
+} from './controllers/thoughtRecordController';
+import { getUsers, createUser } from './controllers/userController';
 
 const router = Router();
 
+// Users
 router.get('/users', getUsers);
 router.post('/user', createUser);
 
-router.get('/thoughts', getThoughts);
-router.post('/thought', createThought);
+// Thought Records
+router.get('/thoughtRecords', getThoughtRecords);
+router.post('/thoughtRecord', createThoughtRecord);
+
+// Moods
+router.get('/moods', getMoods);
+router.post('/mood', createMood);
 
 export default router;

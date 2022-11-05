@@ -10,4 +10,6 @@ mongoose.connect(`${DB}`, (error) => {
   console.log('\n  Connected to mongodb\n');
 });
 
+// Mongoose.connection.dropDatabase();
+
 export default mongoose;
