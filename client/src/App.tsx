@@ -1,10 +1,10 @@
-import ThoughtRecordComponent from './components/ThoughtRecordComponent';
+import ThoughtRecordComponent from './containers/ThoughtRecordComponent';
 import ThoughtRecordContainer from './containers/ThoughtRecordContainer';
 import ThoughtRecordPage from './pages/ThoughtRecordPage';
 
 const App = () => {
   return (
-    <div className="bg-red-500">
+    <div>
       <ThoughtRecordPage>
         <ThoughtRecordContainer>
           <ThoughtRecordComponent />
