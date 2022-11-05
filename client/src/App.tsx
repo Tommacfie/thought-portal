@@ -1,10 +1,15 @@
+import ThoughtRecordComponent from './components/ThoughtRecordComponent';
+import ThoughtRecordContainer from './containers/ThoughtRecordContainer';
+import ThoughtRecordPage from './pages/ThoughtRecordPage';
+
 const App = () => {
   return (
     <div>
-      <h1>Thought Portal</h1>
-      <input name="title" placeholder="Title..." />
-      <textarea placeholder="Your thoughts here..." />
-      <input name="tags" placeholder="tags" />
+      <ThoughtRecordPage>
+        <ThoughtRecordContainer>
+          <ThoughtRecordComponent />
+        </ThoughtRecordContainer>
+      </ThoughtRecordPage>
     </div>
   );
 };
