@@ -1,12 +1,11 @@
 import mongoose from './index';
 const { Schema, model } = mongoose;
 import { IThoughtRecord } from '../utils/interfaces';
-import { moodSchema } from './mood';
 
 const thoughtRecordSchema = new Schema<IThoughtRecord>({
   title: String,
   situation: String,
-  moods: [moodSchema],
+  moods: [{ type: Schema.Types.ObjectId, ref: 'mood' }],
   automaticThoughts: [String],
   evidenceFor: [String],
   evidenceAgainst: [String],
