@@ -4,7 +4,7 @@ import ThoughtRecordPage from './pages/ThoughtRecordPage';
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-red-500">
       <ThoughtRecordPage>
         <ThoughtRecordContainer>
           <ThoughtRecordComponent />
