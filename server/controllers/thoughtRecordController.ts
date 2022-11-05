@@ -4,7 +4,7 @@ import ThoughtRecord from '../models/thoughtRecord';
 
 export const getThoughtRecords = async (_req: Request, res: Response) => {
   try {
-    const thoughts = await ThoughtRecord.find();
+    const thoughts = await ThoughtRecord.find().populate('moods');
     res.send(thoughts).status(200);
   } catch (error) {
     console.log('error:', error);
