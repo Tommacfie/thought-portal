@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ThoughtRecord from '../models/thought';
+import ThoughtRecord from '../models/thoughtRecord';
 
 export const getThoughtRecords = async (_req: Request, res: Response) => {
   try {

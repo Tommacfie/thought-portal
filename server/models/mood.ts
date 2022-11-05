@@ -2,7 +2,7 @@ import mongoose from './index';
 const { Schema, model } = mongoose;
 import { IMood } from '../utils/interfaces';
 
-const moodSchema = new Schema<IMood>({
+export const moodSchema = new Schema<IMood>({
   name: String,
   description: [String],
   intensity: {
