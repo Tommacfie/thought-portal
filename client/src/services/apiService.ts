@@ -1,5 +1,5 @@
 import { server } from '../config';
-import { TThoughtRecord } from '../types/types';
+import { ThoughtRecordType } from '../types/types';
 
 export const getThoughtRecords = async () => {
   try {
@@ -12,7 +12,7 @@ export const getThoughtRecords = async () => {
   }
 };
 
-export const postThoughtRecord = async (thoughtRecord: TThoughtRecord) => {
+export const postThoughtRecord = async (thoughtRecord: ThoughtRecordType) => {
   const postBody = thoughtRecord;
   try {
     const response = await fetch(server + '/thoughtRecord', {

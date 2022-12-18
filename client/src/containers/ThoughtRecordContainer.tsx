@@ -5,6 +5,6 @@ const ThoughtRecordContainer = ({
 }: {
   children: ReactElement | ReactElement[];
 }) => {
-  return <>{children}</>;
+  return <div className="h-full w-full">{children}</div>;
 };
 export default ThoughtRecordContainer;

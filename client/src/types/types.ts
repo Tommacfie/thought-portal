@@ -1,4 +1,4 @@
-export type TMood = {
+export type MoodType = {
   name: string;
   description: [string];
   intensity: {
@@ -8,10 +8,10 @@ export type TMood = {
   tags: [string];
 };
 
-export type TThoughtRecord = {
+export type ThoughtRecordType = {
   title: string;
   situation: string;
-  moods: [TMood];
+  moods: [MoodType];
   automaticThoughts: [string];
   evidenceFor: [string];
   evidenceAgainst: [string];

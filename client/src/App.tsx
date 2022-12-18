@@ -1,16 +1,14 @@
-import ThoughtRecordComponent from './containers/ThoughtRecordComponent';
-import ThoughtRecordContainer from './containers/ThoughtRecordContainer';
+import MainViewContainer from './containers/MainViewContainer';
+import { ThoughtRecordContextProvider } from './context/thoughtRecordContext';
 import ThoughtRecordPage from './pages/ThoughtRecordPage';
 
 const App = () => {
   return (
-    <div>
-      <ThoughtRecordPage>
-        <ThoughtRecordContainer>
-          <ThoughtRecordComponent />
-        </ThoughtRecordContainer>
-      </ThoughtRecordPage>
-    </div>
+    <ThoughtRecordContextProvider>
+      <MainViewContainer>
+        <ThoughtRecordPage />
+      </MainViewContainer>
+    </ThoughtRecordContextProvider>
   );
 };
 
