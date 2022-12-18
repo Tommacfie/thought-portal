@@ -1,10 +1,10 @@
-import { EnumThoughtRecordTablePlaceHolder } from '../../types/types';
+import { EnumThoughtRecordTablePlaceHolder } from '../../types/enums';
 import ThoughtRecordTableCell from './ThoughtRecordTableCell';
 import ThoughtRecordTableHeader from './ThoughtRecordTableHeader';
 
-const ThoughtRecordTableComponent = () => {
+const ThoughtRecordTable = () => {
   return (
-    <table className="border h-[800px]">
+    <table className="border">
       <thead>
         <tr>
           <ThoughtRecordTableHeader />
@@ -13,11 +13,11 @@ const ThoughtRecordTableComponent = () => {
       <tbody>
         <tr>
           {Object.keys(EnumThoughtRecordTablePlaceHolder).map((key) => (
-            <ThoughtRecordTableCell placeholder={key} />
+            <ThoughtRecordTableCell placeholder={key} key={key} />
           ))}
         </tr>
       </tbody>
     </table>
   );
 };
-export default ThoughtRecordTableComponent;
+export default ThoughtRecordTable;
