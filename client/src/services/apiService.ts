@@ -11,6 +11,16 @@ export const getThoughtRecords = async () => {
   }
 };
 
+export const getThoughtRecordById = async (id: string) => {
+  try {
+    const response = await fetch(server + `/thoughtRecord?id=${id}`);
+    const thoughtRecord = await response.json();
+    return thoughtRecord;
+  } catch (error) {
+    console.log('Error:', error);
+  }
+};
+
 export const postThoughtRecord = async (thoughtRecord: ThoughtRecordType) => {
   const postBody = thoughtRecord;
   try {

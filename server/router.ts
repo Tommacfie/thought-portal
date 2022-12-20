@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { getMoods, createMood } from './controllers/moodController';
 import {
   createThoughtRecord,
+  getThoughtRecordById,
   getThoughtRecords,
 } from './controllers/thoughtRecordController';
 import { getUsers, createUser } from './controllers/userController';
@@ -14,6 +15,7 @@ router.post('/user', createUser);
 
 // Thought Records
 router.get('/thoughtRecords', getThoughtRecords);
+router.get('/thoughtRecord', getThoughtRecordById);
 router.post('/thoughtRecord', createThoughtRecord);
 
 // Moods
