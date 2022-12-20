@@ -1,8 +1,8 @@
 import mongoose from './index';
 const { Schema, model } = mongoose;
-import { IThoughtRecord } from '../utils/interfaces';
+import { ThoughtRecordType } from '../utils/types';
 
-const thoughtRecordSchema = new Schema<IThoughtRecord>({
+const thoughtRecordSchema = new Schema<ThoughtRecordType>({
   title: String,
   situation: String,
   moods: [{ type: Schema.Types.ObjectId, ref: 'mood' }],
@@ -12,7 +12,7 @@ const thoughtRecordSchema = new Schema<IThoughtRecord>({
   alternativeThoughts: [String],
 });
 
-const ThoughtRecord = model<IThoughtRecord>(
+const ThoughtRecord = model<ThoughtRecordType>(
   'thoughtRecord',
   thoughtRecordSchema
 );

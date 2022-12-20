@@ -1,8 +1,8 @@
 import mongoose from './index';
 const { Schema, model } = mongoose;
-import { IMood } from '../utils/interfaces';
+import { MoodType } from '../utils/types';
 
-export const moodSchema = new Schema<IMood>({
+export const moodSchema = new Schema<MoodType>({
   name: String,
   description: [String],
   intensity: {
@@ -12,6 +12,6 @@ export const moodSchema = new Schema<IMood>({
   tags: [String],
 });
 
-const Mood = model<IMood>('mood', moodSchema);
+const Mood = model<MoodType>('mood', moodSchema);
 
 export default Mood;

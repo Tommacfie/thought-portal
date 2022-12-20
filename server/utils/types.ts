@@ -1,15 +1,15 @@
-export interface IUser {
+export type UserType = {
   name: string;
   email: string;
-}
+};
 
-export interface IThought {
+export type ThoughtType = {
   title: string;
   body: string;
   tags: string[];
-}
+};
 
-export interface IMood {
+export type MoodType = {
   name: string;
   description: [string];
   intensity: {
@@ -17,14 +17,14 @@ export interface IMood {
     afterThoughtRecord: number;
   };
   tags: [string];
-}
+};
 
-export interface IThoughtRecord {
+export type ThoughtRecordType = {
   title: string;
   situation: string;
-  moods: [IMood];
+  moods: [MoodType];
   automaticThoughts: [string];
   evidenceFor: [string];
   evidenceAgainst: [string];
   alternativeThoughts: [string];
-}
+};

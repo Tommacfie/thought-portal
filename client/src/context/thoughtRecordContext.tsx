@@ -30,7 +30,6 @@ export const ThoughtRecordContextProvider = ({
   children: ReactElement;
 }) => {
   const [thoughtRecords, setThoughtRecords] = useState<ThoughtRecordType[]>([]);
-  console.log(thoughtRecords);
 
   useEffect(() => {
     const fetchItems = async () => {

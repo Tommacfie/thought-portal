@@ -1,13 +1,13 @@
 import mongoose from './index';
 const { Schema, model } = mongoose;
-import { IThought } from '../utils/interfaces';
+import { ThoughtType } from '../utils/types';
 
-const thoughtSchema = new Schema<IThought>({
+const thoughtSchema = new Schema<ThoughtType>({
   title: String,
   body: String,
   tags: [String],
 });
 
-const Thought = model<IThought>('thought', thoughtSchema);
+const Thought = model<ThoughtType>('thought', thoughtSchema);
 
 export default Thought;
