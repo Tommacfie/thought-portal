@@ -1,5 +1,5 @@
 import mongoose from './index';
-import { IUser } from '../utils/interfaces';
+import { IUser } from '../utils/types';
 
 const { Schema, model } = mongoose;
 
