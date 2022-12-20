@@ -13,7 +13,7 @@ app
   .listen(PORT, () => {
     // eslint-disable-next-line no-console
     console.log(
-      `\n${new Date()}:\n\n  MongoDb server started and running at http://localhost:${PORT}`
+      `\n${new Date()}:\n\n  Backend server started and running at http://localhost:${PORT}`
     );
   })
   .on('error', (error) => {
