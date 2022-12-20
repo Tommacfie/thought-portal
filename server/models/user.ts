@@ -1,13 +1,13 @@
 import mongoose from './index';
-import { IUser } from '../utils/types';
+import { UserType } from '../utils/types';
 
 const { Schema, model } = mongoose;
 
-const userSchema = new Schema<IUser>({
+const userSchema = new Schema<UserType>({
   name: String,
   email: String,
 });
 
-const User = model<IUser>('user', userSchema);
+const User = model<UserType>('user', userSchema);
 
 export default User;
