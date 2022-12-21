@@ -22,14 +22,13 @@ export const getThoughtRecordById = async (id: string) => {
 };
 
 export const postThoughtRecord = async (thoughtRecord: ThoughtRecordType) => {
-  const postBody = thoughtRecord;
   try {
     const response = await fetch(server + '/thoughtRecord', {
       method: 'POST',
-      body: JSON.stringify(postBody),
+      body: JSON.stringify(thoughtRecord),
     });
-    const thoughtRecord = await response.json();
-    return thoughtRecord;
+    const newThoughtRecord = await response.json();
+    return newThoughtRecord;
   } catch (error) {
     console.log('Error:', error);
   }
