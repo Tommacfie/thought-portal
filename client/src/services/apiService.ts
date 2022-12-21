@@ -33,3 +33,18 @@ export const postThoughtRecord = async (thoughtRecord: ThoughtRecordType) => {
     console.log('Error:', error);
   }
 };
+
+export const updateThoughtRecordById = async (
+  thoughtRecordChanges: Partial<ThoughtRecordType>
+) => {
+  try {
+    const response = await fetch(server + '/thoughtRecord', {
+      method: 'PUT',
+      body: JSON.stringify(thoughtRecordChanges),
+    });
+    const updatedThoughtRecord = await response.json();
+    return updatedThoughtRecord;
+  } catch (error) {
+    console.log('Error:', error);
+  }
+};
