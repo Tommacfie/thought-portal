@@ -20,3 +20,19 @@ export const createMood = async (req: Request, res: Response) => {
     res.send(error).status(500);
   }
 };
+
+export const updateMood = async (req: Request, res: Response) => {
+  try {
+    const updatedMood = await Mood.findOneAndUpdate(
+      {
+        _id: req.body._id,
+      },
+      { ...req.body },
+      { new: true }
+    );
+    res.send(updatedMood).status(201);
+  } catch (error) {
+    console.log('error:', error);
+    res.send(error).status(500);
+  }
+};
