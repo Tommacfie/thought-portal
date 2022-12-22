@@ -82,8 +82,9 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
     const deletedThoughtRecord = await ThoughtRecord.findOneAndDelete({
       _id: req.query.id,
     });
+    let deletedMoods: any[] = [];
     if (deletedThoughtRecord?.moods.length) {
-      const deletedMoods = await Promise.all(
+      deletedMoods = await Promise.all(
         deletedThoughtRecord?.moods?.map(async (mood: MoodType) => {
           const deletedMood = await Mood.findByIdAndDelete({
             _id: mood._id,
@@ -91,9 +92,8 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
           return deletedMood;
         })
       );
-      console.log('deleted moods', deletedMoods);
     }
-    res.send(deletedThoughtRecord).status(200);
+    res.send({ deletedThoughtRecord, deletedMoods }).status(200);
     return;
   } catch (error) {
     console.log('error: ', error);
