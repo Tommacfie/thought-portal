@@ -12,6 +12,7 @@ import {
   createUser,
   getUserById,
   deleteUser,
+  updateUser,
 } from './controllers/userController';
 
 const router = Router();
@@ -20,6 +21,7 @@ const router = Router();
 router.get('/users', getUsers);
 router.get('/user', getUserById);
 router.post('/user', createUser);
+router.put('/user', updateUser);
 router.delete('/user', deleteUser);
 
 // Thought Records
