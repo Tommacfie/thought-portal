@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { getMoods, createMood } from './controllers/moodController';
 import {
   createThoughtRecord,
-  getThoughtRecord,
+  deleteThoughtRecord,
+  getThoughtRecordById,
   getThoughtRecords,
   updateThoughtRecord,
 } from './controllers/thoughtRecordController';
@@ -16,9 +17,10 @@ router.post('/user', createUser);
 
 // Thought Records
 router.get('/thoughtRecords', getThoughtRecords);
-router.get('/thoughtRecord', getThoughtRecord);
+router.get('/thoughtRecord', getThoughtRecordById);
 router.put('/thoughtRecord', updateThoughtRecord);
 router.post('/thoughtRecord', createThoughtRecord);
+router.delete('/thoughtRecord', deleteThoughtRecord);
 
 // Moods
 router.get('/moods', getMoods);
