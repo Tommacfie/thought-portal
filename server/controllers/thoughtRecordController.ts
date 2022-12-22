@@ -7,6 +7,7 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
   try {
     const thoughtRecords = await ThoughtRecord.find().populate('moods');
     res.send(thoughtRecords).status(200);
+    return;
   } catch (error) {
     console.log('error: ', error);
     res.send(error).status(500);
