@@ -15,8 +15,12 @@ export const getUsers = async (_req: Request, res: Response) => {
 };
 export const getUserById = async (req: Request, res: Response) => {
   try {
-    const user = await User.find({ _id: req.query.id });
-    res.send(user).status(200);
+    const user = await User.findById({ _id: req.query.id });
+    if (!user) {
+      res.send('User Not Found').status(404);
+    } else {
+      res.send(user).status(200);
+    }
     return;
   } catch (error) {
     console.log('error:', error);

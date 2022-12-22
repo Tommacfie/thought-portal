@@ -15,10 +15,15 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
 };
 export const getThoughtRecordById = async (req: Request, res: Response) => {
   try {
-    const thoughtRecord = await ThoughtRecord.find({
+    const thoughtRecord = await ThoughtRecord.findById({
       _id: req.query.id,
     }).populate('moods');
-    res.send(thoughtRecord).status(200);
+
+    if (!thoughtRecord) {
+      res.send('Thought Record not found').status(404);
+    } else {
+      res.send(thoughtRecord).status(200);
+    }
     return;
   } catch (error) {
     console.log('error: ', error);
