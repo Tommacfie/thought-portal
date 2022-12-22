@@ -7,13 +7,20 @@ import {
   getThoughtRecords,
   updateThoughtRecord,
 } from './controllers/thoughtRecordController';
-import { getUsers, createUser } from './controllers/userController';
+import {
+  getUsers,
+  createUser,
+  getUserById,
+  deleteUser,
+} from './controllers/userController';
 
 const router = Router();
 
 // Users
 router.get('/users', getUsers);
+router.get('/user', getUserById);
 router.post('/user', createUser);
+router.delete('/user', deleteUser);
 
 // Thought Records
 router.get('/thoughtRecords', getThoughtRecords);
