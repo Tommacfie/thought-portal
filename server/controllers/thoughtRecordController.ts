@@ -8,12 +8,12 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
     const thoughtRecords = await ThoughtRecord.find().populate('moods');
     res.send(thoughtRecords).status(200);
   } catch (error) {
-    console.log('error:', error);
+    console.log('error: ', error);
     res.send(error).status(500);
     return;
   }
 };
-export const getThoughtRecord = async (req: Request, res: Response) => {
+export const getThoughtRecordById = async (req: Request, res: Response) => {
   try {
     const thoughtRecord = await ThoughtRecord.find({
       _id: req.query.id,
@@ -21,7 +21,7 @@ export const getThoughtRecord = async (req: Request, res: Response) => {
     res.send(thoughtRecord).status(200);
     return;
   } catch (error) {
-    console.log('error:', error);
+    console.log('error: ', error);
     res.send(error).status(500);
     return;
   }
@@ -29,13 +29,15 @@ export const getThoughtRecord = async (req: Request, res: Response) => {
 
 export const createThoughtRecord = async (req: Request, res: Response) => {
   try {
-    const newMood = await Mood.create(req.body.moods);
-    req.body.moods = newMood;
+    if (req.body.moods) {
+      const newMood = await Mood.create(req.body.moods);
+      req.body.moods = newMood;
+    }
     const newThoughtRecord = await ThoughtRecord.create(req.body);
     res.send(newThoughtRecord).status(201);
     return;
   } catch (error) {
-    console.log('error:', error);
+    console.log('error: ', error);
     res.send(error).status(500);
     return;
   }
@@ -43,7 +45,6 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
 
 export const updateThoughtRecord = async (req: Request, res: Response) => {
   const moods: MoodType[] = req.body.moods;
-
   try {
     const updatedMoods = await Promise.all(
       moods.map(async (mood, index) => {
@@ -70,8 +71,32 @@ export const updateThoughtRecord = async (req: Request, res: Response) => {
     res.send(newThoughtRecord).status(201);
     return;
   } catch (error) {
-    console.log('error:', error);
+    console.log('error: ', error);
     res.send(error).status(500);
+    return;
+  }
+};
+
+export const deleteThoughtRecord = async (req: Request, res: Response) => {
+  try {
+    const deletedThoughtRecord = await ThoughtRecord.findOneAndDelete({
+      _id: req.query.id,
+    });
+    if (deletedThoughtRecord?.moods.length) {
+      const deletedMoods = await Promise.all(
+        deletedThoughtRecord?.moods?.map(async (mood: MoodType) => {
+          const deletedMood = await Mood.findByIdAndDelete({
+            _id: mood._id,
+          });
+          return deletedMood;
+        })
+      );
+      console.log('deleted moods', deletedMoods);
+    }
+    res.send(deletedThoughtRecord).status(201);
+    return;
+  } catch (error) {
+    console.log('error: ', error);
     return;
   }
 };
