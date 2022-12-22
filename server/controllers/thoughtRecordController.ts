@@ -68,7 +68,7 @@ export const updateThoughtRecord = async (req: Request, res: Response) => {
       { ...req.body, moods: updatedMoods },
       { new: true }
     );
-    res.send(newThoughtRecord).status(201);
+    res.send(newThoughtRecord).status(200);
     return;
   } catch (error) {
     console.log('error: ', error);
@@ -93,7 +93,7 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
       );
       console.log('deleted moods', deletedMoods);
     }
-    res.send(deletedThoughtRecord).status(201);
+    res.send(deletedThoughtRecord).status(200);
     return;
   } catch (error) {
     console.log('error: ', error);
