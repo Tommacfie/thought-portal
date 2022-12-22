@@ -10,6 +10,7 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
   } catch (error) {
     console.log('error:', error);
     res.send(error).status(500);
+    return;
   }
 };
 export const getThoughtRecord = async (req: Request, res: Response) => {
@@ -18,9 +19,11 @@ export const getThoughtRecord = async (req: Request, res: Response) => {
       _id: req.query.id,
     }).populate('moods');
     res.send(thoughtRecord).status(200);
+    return;
   } catch (error) {
     console.log('error:', error);
     res.send(error).status(500);
+    return;
   }
 };
 
@@ -30,9 +33,11 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
     req.body.moods = newMood;
     const newThoughtRecord = await ThoughtRecord.create(req.body);
     res.send(newThoughtRecord).status(201);
+    return;
   } catch (error) {
     console.log('error:', error);
     res.send(error).status(500);
+    return;
   }
 };
 
@@ -63,8 +68,10 @@ export const updateThoughtRecord = async (req: Request, res: Response) => {
       { new: true }
     );
     res.send(newThoughtRecord).status(201);
+    return;
   } catch (error) {
     console.log('error:', error);
     res.send(error).status(500);
+    return;
   }
 };
