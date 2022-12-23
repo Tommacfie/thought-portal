@@ -52,8 +52,8 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
 };
 
 export const updateThoughtRecord = async (req: Request, res: Response) => {
-  const moods: MoodType[] = req.body.moods;
   try {
+    const moods: MoodType[] = req.body.moods;
     const updatedMoods = await Promise.all(
       moods.map(async (mood, index) => {
         if (mood._id) {
