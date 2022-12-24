@@ -7,6 +7,7 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
   try {
     const thoughtRecords = await ThoughtRecord.find().populate('moods');
     res.send(thoughtRecords).status(200);
+    return;
   } catch (error) {
     console.log('error: ', error);
     res.send(error).status(500);
@@ -15,10 +16,15 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
 };
 export const getThoughtRecordById = async (req: Request, res: Response) => {
   try {
-    const thoughtRecord = await ThoughtRecord.find({
+    const thoughtRecord = await ThoughtRecord.findById({
       _id: req.query.id,
     }).populate('moods');
-    res.send(thoughtRecord).status(200);
+
+    if (!thoughtRecord) {
+      res.send('Thought Record not found').status(404);
+    } else {
+      res.send(thoughtRecord).status(200);
+    }
     return;
   } catch (error) {
     console.log('error: ', error);
@@ -33,7 +39,9 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
       const newMood = await Mood.create(req.body.moods);
       req.body.moods = newMood;
     }
-    const newThoughtRecord = await ThoughtRecord.create(req.body);
+    const newThoughtRecord = await (
+      await ThoughtRecord.create(req.body)
+    ).populate('moods');
     res.send(newThoughtRecord).status(201);
     return;
   } catch (error) {
@@ -44,8 +52,8 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
 };
 
 export const updateThoughtRecord = async (req: Request, res: Response) => {
-  const moods: MoodType[] = req.body.moods;
   try {
+    const moods: MoodType[] = req.body.moods;
     const updatedMoods = await Promise.all(
       moods.map(async (mood, index) => {
         if (mood._id) {
@@ -67,7 +75,7 @@ export const updateThoughtRecord = async (req: Request, res: Response) => {
       },
       { ...req.body, moods: updatedMoods },
       { new: true }
-    );
+    ).populate('moods');
     res.send(newThoughtRecord).status(200);
     return;
   } catch (error) {
@@ -81,10 +89,10 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
   try {
     const deletedThoughtRecord = await ThoughtRecord.findOneAndDelete({
       _id: req.query.id,
-    });
-    let deletedMoods: any[] = [];
+    }).populate('moods');
+
     if (deletedThoughtRecord?.moods.length) {
-      deletedMoods = await Promise.all(
+      await Promise.all(
         deletedThoughtRecord?.moods?.map(async (mood: MoodType) => {
           const deletedMood = await Mood.findByIdAndDelete({
             _id: mood._id,
@@ -93,7 +101,7 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
         })
       );
     }
-    res.send({ deletedThoughtRecord, deletedMoods }).status(200);
+    res.send(deletedThoughtRecord).status(200);
     return;
   } catch (error) {
     console.log('error: ', error);
