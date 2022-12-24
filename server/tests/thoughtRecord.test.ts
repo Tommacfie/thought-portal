@@ -1,13 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose from '../models/index';
 import request from 'supertest';
 import { app } from '../index';
 import { DB } from '../config';
 
 beforeEach(async () => {
-  await mongoose.connect(`${DB}`);
+  mongoose.connect(`${DB}`, (error) => {
+    if (error) {
+      console.log('error: ', error);
+      return;
+    } else {
+      console.log('connected to database');
+    }
+  });
 });
-beforeEach(async () => {
-  await mongoose.connection.close();
+afterEach(async () => {
+  await mongoose.disconnect();
 });
 
 describe('Get /thoughtRecords', () => {
