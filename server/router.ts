@@ -15,7 +15,7 @@ import {
   updateUser,
 } from './controllers/userController';
 
-const router = Router();
+const router = Router({ strict: true });
 
 // Users
 router.get('/users', getUsers);
