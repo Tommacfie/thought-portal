@@ -10,9 +10,17 @@ mongoose.connect(`${DB}`, (error) => {
     return;
   }
   // eslint-disable-next-line no-console
-  console.log('\n  Connected to mongodb\n');
+  console.log(`\n${new Date().toLocaleString()}:\n=> Connected to mongodb\n`);
 });
 
-// Mongoose.connection.dropDatabase();
+mongoose.connection.on('close', (error) => {
+  if (error) {
+    console.log('error: ', error);
+    return;
+  }
+  console.log(
+    `\n${new Date().toLocaleString()}:\n=> Disconnected from mongodb\n`
+  );
+});
 
 export default mongoose;

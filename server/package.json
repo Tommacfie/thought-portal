@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon index.ts",
-    "drop": "node utils/scripts/dropDb.ts"
+    "drop": "ts-node utils/scripts/dropDb.ts"
   },
   "keywords": [],
   "author": "",

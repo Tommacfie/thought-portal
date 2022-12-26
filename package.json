@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx kill-port 3000 && concurrently \"cd client && npm run start\" \" cd server && npm run start\"",
     "server":"cd server && npm run start",
-    "client":"cd client && npm run start"
+    "client":"cd client && npm run start",
+    "drop":"cd server && npm run drop"
   },
   "author": "Tom Macfie",
   "license": "ISC",
