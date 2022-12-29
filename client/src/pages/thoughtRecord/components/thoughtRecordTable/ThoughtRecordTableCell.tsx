@@ -1,4 +1,4 @@
-import { EnumThoughtRecordTablePlaceHolder } from '../../types/enums';
+import { EnumThoughtRecordTablePlaceHolder } from '../../../../types/enums';
 
 const ThoughtRecordTableCell = ({ placeholder }: { placeholder: string }) => {
   return (
