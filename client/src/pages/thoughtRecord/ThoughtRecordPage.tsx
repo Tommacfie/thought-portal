@@ -1,5 +1,5 @@
-import ThoughtRecordTable from '../components/thoughtRecordTable/ThoughtRecordTable';
-import ThoughtRecordContainer from '../containers/ThoughtRecordContainer';
+import ThoughtRecordTable from './components/thoughtRecordTable/ThoughtRecordTable';
+import ThoughtRecordContainer from './container/ThoughtRecordContainer';
 
 const ThoughtRecordPage = () => {
   return (

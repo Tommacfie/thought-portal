@@ -1,6 +1,6 @@
-import MainViewContainer from './containers/MainViewContainer';
+import MainViewContainer from './pages/mainView/containers/MainViewContainer';
 import { ThoughtRecordContextProvider } from './context/thoughtRecordContext';
-import ThoughtRecordPage from './pages/ThoughtRecordPage';
+import ThoughtRecordPage from './pages/thoughtRecord/ThoughtRecordPage';
 
 const App = () => {
   return (
