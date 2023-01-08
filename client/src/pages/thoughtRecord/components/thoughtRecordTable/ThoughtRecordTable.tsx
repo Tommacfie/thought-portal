@@ -4,7 +4,7 @@ import ThoughtRecordTableHeader from './ThoughtRecordTableHeader';
 
 const ThoughtRecordTable = () => {
   return (
-    <table className="border">
+    <table className="h-1/2 border">
       <thead>
         <tr>
           <ThoughtRecordTableHeader />
