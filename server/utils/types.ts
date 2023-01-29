@@ -15,7 +15,7 @@ export type ThoughtType = {
 export type MoodType = {
   _id: string;
   name: string;
-  description: [string];
+  description: string[];
   intensity: {
     beforeThoughtRecord: number;
     afterThoughtRecord: number;
@@ -27,11 +27,11 @@ export type ThoughtRecordType = {
   _id: string;
   title: string;
   situation: string;
-  moods: [MoodType];
-  automaticThoughts: [string];
-  evidenceFor: [string];
-  evidenceAgainst: [string];
-  alternativeThoughts: [string];
+  moods: MoodType[];
+  automaticThoughts: string[];
+  evidenceFor: string[];
+  evidenceAgainst: string[];
+  alternativeThoughts: string[];
 };
 
 export type JournalEntryType = {
