@@ -1,13 +1,10 @@
-import MainViewContainer from './pages/mainView/containers/MainViewContainer';
 import { ThoughtRecordContextProvider } from './context/thoughtRecordContext';
-import ThoughtRecordPage from './pages/thoughtRecord/ThoughtRecordPage';
+import MainViewPage from './pages/mainView/MainViewPage';
 
 const App = () => {
   return (
     <ThoughtRecordContextProvider>
-      <MainViewContainer>
-        <ThoughtRecordPage />
-      </MainViewContainer>
+      <MainViewPage />
     </ThoughtRecordContextProvider>
   );
 };

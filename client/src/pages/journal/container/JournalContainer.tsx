@@ -1,10 +1,10 @@
 import { ReactElement } from 'react';
 
-const MainViewContainer = ({
+const JournalContainer = ({
   children,
 }: {
   children: ReactElement | ReactElement[];
 }) => {
   return <>{children}</>;
 };
-export default MainViewContainer;
+export default JournalContainer;

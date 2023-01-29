@@ -5,11 +5,7 @@ import ThoughtRecordTableHeader from './ThoughtRecordTableHeader';
 const ThoughtRecordTable = () => {
   return (
     <table className="h-1/2 border">
-      <thead>
-        <tr>
-          <ThoughtRecordTableHeader />
-        </tr>
-      </thead>
+      <ThoughtRecordTableHeader />
       <tbody>
         <tr>
           {Object.keys(EnumThoughtRecordTablePlaceHolder).map((key) => (

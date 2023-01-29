@@ -1,10 +1,6 @@
 import { ReactElement } from 'react';
 
-const ThoughtRecordContainer = ({
-  children,
-}: {
-  children: ReactElement | ReactElement[];
-}) => {
-  return <div className="h-full w-full">{children}</div>;
+const ThoughtRecordContainer = ({ children }: { children: ReactElement }) => {
+  return <>{children}</>;
 };
 export default ThoughtRecordContainer;
