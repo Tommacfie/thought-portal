@@ -1,4 +1,4 @@
-import { moods } from './moods';
+import ThoughtRecord from '../../../models/thoughtRecord';
 
 export const thoughtRecords = [
   {
@@ -13,7 +13,7 @@ export const thoughtRecords = [
   {
     title: 'Mood Check',
     situation: 'At home',
-    moods: [moods[0]],
+    moods: [],
     automaticThoughts: [],
     evidenceFor: [],
     evidenceAgainst: [],
@@ -22,10 +22,16 @@ export const thoughtRecords = [
   {
     title: 'Mood Check',
     situation: 'At the pub after work',
-    moods: [moods[1]],
+    moods: [],
     automaticThoughts: [],
     evidenceFor: [],
     evidenceAgainst: [],
     alternativeThoughts: [],
   },
 ];
+
+Promise.all([
+  thoughtRecords.forEach(async (thoughtRecord: any) => {
+    await ThoughtRecord.create(thoughtRecord);
+  }),
+]);
