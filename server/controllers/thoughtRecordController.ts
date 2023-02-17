@@ -6,7 +6,7 @@ import { MoodType } from '../utils/types';
 export const getThoughtRecords = async (_req: Request, res: Response) => {
   try {
     const thoughtRecords = await ThoughtRecord.find().populate('moods');
-    res.send(thoughtRecords).status(200);
+    res.status(200).send(thoughtRecords);
     return;
   } catch (error) {
     console.log('error: ', error);
@@ -21,7 +21,7 @@ export const getThoughtRecordById = async (req: Request, res: Response) => {
     }).populate('moods');
 
     if (!thoughtRecord) {
-      res.send('Thought Record not found').status(404);
+      res.status(404).send('Thought Record not found');
     } else {
       res.status(200).send(thoughtRecord);
     }
@@ -69,14 +69,16 @@ export const updateThoughtRecord = async (req: Request, res: Response) => {
         }
       })
     );
+
     const newThoughtRecord = await ThoughtRecord.findOneAndUpdate(
       {
-        _id: req.body._id,
+        _id: req.query.id,
       },
       { ...req.body, moods: updatedMoods },
       { new: true }
     ).populate('moods');
-    res.send(newThoughtRecord).status(200);
+
+    res.status(200).send(newThoughtRecord);
     return;
   } catch (error) {
     console.log('error: ', error);
@@ -101,7 +103,7 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
         })
       );
     }
-    res.send(deletedThoughtRecord).status(200);
+    res.status(200).send(deletedThoughtRecord);
     return;
   } catch (error) {
     console.log('error: ', error);
