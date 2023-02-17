@@ -1,10 +1,13 @@
-import { ReactElement } from 'react';
+import { useThoughtRecordContext } from '../../../context/thoughtRecordContext';
 
-const JournalContainer = ({
-  children,
-}: {
-  children: ReactElement | ReactElement[];
-}) => {
-  return <>{children}</>;
+const JournalContainer = () => {
+  const { journalEntries } = useThoughtRecordContext();
+  return (
+    <>
+      {journalEntries.map(() => {
+        return <div>Journal Entry</div>;
+      })}
+    </>
+  );
 };
 export default JournalContainer;
