@@ -10,7 +10,7 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-const testThoughtRecord = {
+const newThoughtRecord = {
   title: 'Test Thought Record',
   situation: 'Testing environment',
   moods: [],
@@ -29,7 +29,7 @@ describe('Get /thoughtRecords', () => {
   it('should allow a user to create a thought record', async () => {
     const res = await request(app)
       .post('/thoughtRecord')
-      .send(testThoughtRecord)
+      .send(newThoughtRecord)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json');
 
