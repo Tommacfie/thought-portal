@@ -34,6 +34,7 @@ describe('Get /thoughtRecords', () => {
     const response = await request(app).get('/thoughtRecords');
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBeGreaterThan(0);
+    console.log(response);
   });
   it('should allow a user to create a thought record', async () => {
     const response = await request(app)
@@ -65,5 +66,24 @@ describe('Get /thoughtRecords', () => {
     expect(editThoughtRecord.statusCode).toBe(200);
     expect(editThoughtRecord.body.title).toBe('Edit Thought Record');
     expect(editThoughtRecord.body.situation).toBe('Edit Testing environment');
+  });
+  it('should allow a user to delete a thought record', async () => {
+    const createThoughtRecordToDelete = await request(app)
+      .post('/thoughtRecord')
+      .send(newThoughtRecord)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json');
+
+    const createdThoughtRecordToDeleteId = createThoughtRecordToDelete.body._id;
+
+    const deleteThoughtRecord = await request(app)
+      .delete('/thoughtRecord')
+      .query({ id: createdThoughtRecordToDeleteId })
+      .send(editedThoughtRecord)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json');
+
+    expect(deleteThoughtRecord.statusCode).toBe(200);
+    expect(deleteThoughtRecord.body.title).toBe('Test Thought Record');
   });
 });
