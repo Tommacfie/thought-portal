@@ -23,7 +23,7 @@ export const getThoughtRecordById = async (req: Request, res: Response) => {
     if (!thoughtRecord) {
       res.send('Thought Record not found').status(404);
     } else {
-      res.send(thoughtRecord).status(200);
+      res.status(200).send(thoughtRecord);
     }
     return;
   } catch (error) {
@@ -42,7 +42,7 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
     const newThoughtRecord = await (
       await ThoughtRecord.create(req.body)
     ).populate('moods');
-    res.send(newThoughtRecord).status(201);
+    res.status(201).send(newThoughtRecord);
     return;
   } catch (error) {
     console.log('error: ', error);
