@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { getJournalEntries, getThoughtRecords } from '../services/apiService';
+import { EnumTabSelection } from '../types/enums';
 import { JournalEntryType, ThoughtRecordType } from '../types/types';
 
 export interface ThoughtRecordContextType {
@@ -16,6 +17,8 @@ export interface ThoughtRecordContextType {
   setThoughtRecords: Dispatch<SetStateAction<ThoughtRecordType[]>>;
   journalEntries: JournalEntryType[];
   setJournalEntries: Dispatch<SetStateAction<JournalEntryType[]>>;
+  tabSelection: EnumTabSelection;
+  setTabSelection: Dispatch<SetStateAction<EnumTabSelection>>;
 }
 
 const ThoughtRecordContext = createContext<ThoughtRecordContextType>({
@@ -25,6 +28,9 @@ const ThoughtRecordContext = createContext<ThoughtRecordContextType>({
   journalEntries: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setJournalEntries: () => {},
+  tabSelection: EnumTabSelection.HOME,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setTabSelection: () => {},
 });
 
 export default ThoughtRecordContext;
@@ -36,6 +42,9 @@ export const ThoughtRecordContextProvider = ({
 }) => {
   const [thoughtRecords, setThoughtRecords] = useState<ThoughtRecordType[]>([]);
   const [journalEntries, setJournalEntries] = useState<JournalEntryType[]>([]);
+  const [tabSelection, setTabSelection] = useState<EnumTabSelection>(
+    EnumTabSelection.HOME
+  );
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -53,8 +62,6 @@ export const ThoughtRecordContextProvider = ({
     fetchItems();
   }, []);
 
-  console.log(thoughtRecords, journalEntries);
-
   return (
     <ThoughtRecordContext.Provider
       value={{
@@ -62,6 +69,8 @@ export const ThoughtRecordContextProvider = ({
         setThoughtRecords,
         journalEntries,
         setJournalEntries,
+        tabSelection,
+        setTabSelection,
       }}
     >
       {children}
