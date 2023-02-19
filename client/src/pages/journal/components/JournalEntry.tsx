@@ -14,6 +14,7 @@ const JournalEntry = ({ journalEntry }: { journalEntry: JournalEntryType }) => {
           return (
             <div className="mr-1" key={tag + index}>
               {tag}
+              {index !== journalEntry.tags.length - 1 ? ',' : ''}
             </div>
           );
         })}

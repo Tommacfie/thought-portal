@@ -24,4 +24,5 @@ const JournalContainer = () => {
     </>
   );
 };
+
 export default JournalContainer;

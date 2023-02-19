@@ -46,8 +46,8 @@ const CreateJournalEntryForm = () => {
       <textarea
         id="journal-entry-body-input"
         placeholder="Write your thoughts here..."
-        className="m-1 border p-3 w-3/4"
-        rows={10}
+        className="m-1 border px-3 py-2 w-3/4"
+        rows={15}
         value={journalEntry.journalEntry}
         onChange={(event) => {
           setJournalEntry((prev) => {
@@ -60,7 +60,7 @@ const CreateJournalEntryForm = () => {
       </label>
       <input
         id="journal-entry-tags-input"
-        placeholder="Add tags here..."
+        placeholder="Add comma-separated tags here, i.e: big news, friends, parents etc"
         value={compileTags(journalEntry.tags)}
         className="border w-2/3 py-1 px-2 m-1 text-sm"
         onChange={(event) => {
@@ -85,7 +85,7 @@ const CreateJournalEntryForm = () => {
             onChange={() => setSaveCopy(!saveCopy)}
           />
           <label className="m-1" htmlFor="save-journal-entry-checkbox">
-            Save a copy to files
+            Save a copy to file
           </label>
         </div>
       </div>
