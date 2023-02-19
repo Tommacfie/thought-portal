@@ -14,6 +14,7 @@ const CreateJournalEntryForm = () => {
   const [journalEntry, setJournalEntry] =
     useState<CreateJournalEntryType>(initialValues);
   const [saveCopy, setSaveCopy] = useState(false);
+  const [readOnly] = useState(false);
   return (
     <form
       className="flex flex-col justify-evenly items-center border py-10 h-1/2"
@@ -39,6 +40,7 @@ const CreateJournalEntryForm = () => {
             return { ...prev, title: event.target.value };
           });
         }}
+        readOnly={readOnly}
       />
       <label className="hidden" htmlFor="journal-entry-body-input">
         Journal Entry Body Input
@@ -54,13 +56,14 @@ const CreateJournalEntryForm = () => {
             return { ...prev, journalEntry: event.target.value };
           });
         }}
+        readOnly={readOnly}
       />
       <label className="hidden" htmlFor="journal-entry-tags-input">
         Journal Entry Tags Input
       </label>
       <input
         id="journal-entry-tags-input"
-        placeholder="Add comma-separated tags here, i.e: big news, friends, parents etc"
+        placeholder="Add comma-separated tags here, i.e: work, friends, parents etc"
         value={compileTags(journalEntry.tags)}
         className="border w-2/3 py-1 px-2 m-1 text-sm"
         onChange={(event) => {
@@ -72,12 +75,13 @@ const CreateJournalEntryForm = () => {
             };
           });
         }}
+        readOnly={readOnly}
       />
       <div className="flex w-full justify-evenly items-center">
-        <button type="submit" className="border p-1 m-1">
+        <button type="submit" className="border p-2 m-1">
           Submit Journal Entry
         </button>
-        <div className="flex items-center">
+        <div className="flex items-center border p-1">
           <input
             type="checkbox"
             className="m-1"
