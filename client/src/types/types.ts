@@ -19,6 +19,7 @@ export type ThoughtRecordType = {
 };
 
 export type JournalEntryType = {
+  _id: string | undefined;
   title: string;
   journalEntry: string;
   tags: string[];

@@ -6,8 +6,8 @@ const JournalContainer = () => {
 
   return (
     <>
-      {journalEntries.map(() => {
-        return <div>Journal Entry</div>;
+      {journalEntries.map((journalEntry) => {
+        return <div key={journalEntry._id}>{journalEntry.title}</div>;
       })}
     </>
   );

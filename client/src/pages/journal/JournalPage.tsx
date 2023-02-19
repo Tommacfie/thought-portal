@@ -4,7 +4,7 @@ import JournalContainer from './container/JournalContainer';
 const JournalPage = () => {
   return (
     <div className="w-full h-full border">
-      <div>Journals</div>
+      <div>Journals List:</div>
       <JournalContainer />
       <CreateJournalEntryForm />
     </div>
