@@ -1,6 +1,8 @@
-import { JournalEntryType } from '../../../types/types';
+import { CreateJournalEntryType } from '../../../types/types';
 
-export const writeJournalEntryToFile = (journalEntry: JournalEntryType) => {
+export const writeJournalEntryToFile = (
+  journalEntry: CreateJournalEntryType
+) => {
   const fileData = JSON.stringify(journalEntry);
   const blob = new Blob([fileData], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);

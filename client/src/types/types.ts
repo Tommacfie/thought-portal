@@ -19,7 +19,13 @@ export type ThoughtRecordType = {
 };
 
 export type JournalEntryType = {
-  _id: string | undefined;
+  _id: string;
+  title: string;
+  journalEntry: string;
+  tags: string[];
+};
+
+export type CreateJournalEntryType = {
   title: string;
   journalEntry: string;
   tags: string[];

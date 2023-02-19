@@ -1,5 +1,9 @@
 import { server } from '../config';
-import { JournalEntryType, ThoughtRecordType } from '../types/types';
+import {
+  CreateJournalEntryType,
+  JournalEntryType,
+  ThoughtRecordType,
+} from '../types/types';
 
 export const getThoughtRecords = async () => {
   try {
@@ -57,7 +61,9 @@ export const postThoughtRecord = async (thoughtRecord: ThoughtRecordType) => {
   }
 };
 
-export const postJournalEntry = async (journalEntry: JournalEntryType) => {
+export const postJournalEntry = async (
+  journalEntry: CreateJournalEntryType
+) => {
   try {
     const response = await fetch(server + '/journalEntry', {
       method: 'POST',

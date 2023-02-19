@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { postJournalEntry } from '../../../services/apiService';
-import { JournalEntryType } from '../../../types/types';
+import { CreateJournalEntryType } from '../../../types/types';
 import { compileTags } from '../helpers/compileTags';
 import { writeJournalEntryToFile } from '../helpers/writeJournalEntryToFile';
 
-const initialValues: JournalEntryType = {
-  _id: undefined,
+const initialValues: CreateJournalEntryType = {
   title: '',
   journalEntry: '',
   tags: [],
@@ -13,7 +12,7 @@ const initialValues: JournalEntryType = {
 
 const CreateJournalEntryForm = () => {
   const [journalEntry, setJournalEntry] =
-    useState<JournalEntryType>(initialValues);
+    useState<CreateJournalEntryType>(initialValues);
   const [saveCopy, setSaveCopy] = useState(false);
   return (
     <form
