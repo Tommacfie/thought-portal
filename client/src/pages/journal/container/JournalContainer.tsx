@@ -10,10 +10,10 @@ const JournalContainer = () => {
     <>
       {journalEntries.map((journalEntry) => {
         return (
-          <div>
+          <div key={journalEntry._id}>
             <button
+              className="border p-1"
               onClick={() => setShowJournalEntry(!showJournalEntry)}
-              key={journalEntry._id}
             >
               {journalEntry.title}
             </button>
