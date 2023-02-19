@@ -13,7 +13,7 @@ const CreateJournalEntryForm = () => {
     useState<JournalEntryType>(initialValues);
   return (
     <form
-      onSubmit={async () => {
+      onSubmit={async (event) => {
         await postJournalEntry(journalEntry);
         setJournalEntry(initialValues);
       }}

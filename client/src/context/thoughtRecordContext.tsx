@@ -17,8 +17,8 @@ export interface ThoughtRecordContextType {
   setThoughtRecords: Dispatch<SetStateAction<ThoughtRecordType[]>>;
   journalEntries: JournalEntryType[];
   setJournalEntries: Dispatch<SetStateAction<JournalEntryType[]>>;
-  tabSelection: EnumTabSelection;
-  setTabSelection: Dispatch<SetStateAction<EnumTabSelection>>;
+  tabSelection: EnumTabSelection | undefined;
+  setTabSelection: Dispatch<SetStateAction<EnumTabSelection | undefined>>;
 }
 
 const ThoughtRecordContext = createContext<ThoughtRecordContextType>({
@@ -42,9 +42,7 @@ export const ThoughtRecordContextProvider = ({
 }) => {
   const [thoughtRecords, setThoughtRecords] = useState<ThoughtRecordType[]>([]);
   const [journalEntries, setJournalEntries] = useState<JournalEntryType[]>([]);
-  const [tabSelection, setTabSelection] = useState<EnumTabSelection>(
-    EnumTabSelection.HOME
-  );
+  const [tabSelection, setTabSelection] = useState<EnumTabSelection>();
 
   useEffect(() => {
     const fetchItems = async () => {

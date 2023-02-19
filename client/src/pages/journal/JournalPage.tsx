@@ -1,3 +1,4 @@
+import CreateJournalEntryForm from './components/CreateJournalEntryForm';
 import JournalContainer from './container/JournalContainer';
 
 const JournalPage = () => {
@@ -5,6 +6,7 @@ const JournalPage = () => {
     <div className="w-full h-full border">
       <div>Journals</div>
       <JournalContainer />
+      <CreateJournalEntryForm />
     </div>
   );
 };
