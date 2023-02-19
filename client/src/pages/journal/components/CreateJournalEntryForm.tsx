@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { postJournalEntry } from '../../../services/apiService';
 import { JournalEntryType } from '../../../types/types';
+import { compileTags } from '../helpers/compileTags';
 import { writeJournalEntryToFile } from '../helpers/writeJournalEntryToFile';
 
 const initialValues: JournalEntryType = {
@@ -25,10 +26,10 @@ const CreateJournalEntryForm = () => {
       }}
     >
       <div className="flex flex-col items-center">
-        <div className="text-center">Journal Page</div>
+        <div className="text-center">Create a New Journal Entry</div>
         <input
-          placeholder="Title"
-          className="border m-1 pl-1 w-1/2"
+          placeholder="Give your Journal Entry a title..."
+          className="border m-1 pl-1 w-1/2 text-center"
           value={journalEntry.title}
           onChange={(event) => {
             setJournalEntry((prev) => {
@@ -37,8 +38,9 @@ const CreateJournalEntryForm = () => {
           }}
         />
         <textarea
-          placeholder="Journal"
-          className="m-1 border pl-1 w-2/3"
+          placeholder="Write your thoughts here..."
+          className="m-1 border pl-1 w-3/4"
+          rows={5}
           value={journalEntry.journalEntry}
           onChange={(event) => {
             setJournalEntry((prev) => {
@@ -46,30 +48,32 @@ const CreateJournalEntryForm = () => {
             });
           }}
         />
-        {/* <input
-              value={[...journalEntry.tags]}
-              onChange={(event) => {
-                const newTags = event.target.value.split(',');
-                setJournalEntry((prev) => {
-                  return {
-                    ...prev,
-                    tags: [...journalEntry.tags, ...newTags],
-                  };
-                });
-              }}
-            /> */}
+        <input
+          placeholder="Add tags here..."
+          value={compileTags(journalEntry.tags)}
+          className="border w-2/3 p-1 m-1"
+          onChange={(event) => {
+            const newTags = event.target.value.split(',');
+            setJournalEntry((prev) => {
+              return {
+                ...prev,
+                tags: [...newTags],
+              };
+            });
+          }}
+        />
         <div className="flex w-full justify-evenly items-center">
-          <button type="submit" className="border p-1">
+          <button type="submit" className="border p-1 m-1">
             Submit Journal Entry
           </button>
           <div className="flex items-center">
             <input
               type="checkbox"
-              className="mr-1"
+              className="m-1"
               id="save-journal-entry-copy-checkbox"
               onChange={() => setSaveCopy(!saveCopy)}
             />
-            <label htmlFor="save-journal-entry-checkbox">
+            <label className="m-1" htmlFor="save-journal-entry-checkbox">
               Save a copy to files
             </label>
           </div>
