@@ -1,14 +1,11 @@
-import CreateJournalEntryForm from './components/CreateJournalEntryForm';
-import JournalContainer from './container/JournalContainer';
+import { ReactElement } from 'react';
 
-const JournalPage = () => {
-  return (
-    <div className="w-full h-full border">
-      <div>Journals List:</div>
-      <JournalContainer />
-      <CreateJournalEntryForm />
-    </div>
-  );
+const JournalPage = ({
+  children,
+}: {
+  children: ReactElement | ReactElement[];
+}) => {
+  return <div className="w-full h-full border">{children}</div>;
 };
 
 export default JournalPage;

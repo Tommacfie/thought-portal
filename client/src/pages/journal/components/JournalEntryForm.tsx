@@ -10,7 +10,7 @@ const initialValues: CreateJournalEntryType = {
   tags: [],
 };
 
-const CreateJournalEntryForm = () => {
+const JournalEntryForm = () => {
   const [journalEntry, setJournalEntry] =
     useState<CreateJournalEntryType>(initialValues);
   const [saveCopy, setSaveCopy] = useState(false);
@@ -97,4 +97,4 @@ const CreateJournalEntryForm = () => {
   );
 };
 
-export default CreateJournalEntryForm;
+export default JournalEntryForm;
