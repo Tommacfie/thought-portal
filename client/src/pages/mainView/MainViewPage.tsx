@@ -39,7 +39,6 @@ const MainViewPage = () => {
               path="create"
               element={
                 <JournalPage>
-                  <div>Hello</div>
                   <JournalEntryForm />
                 </JournalPage>
               }
