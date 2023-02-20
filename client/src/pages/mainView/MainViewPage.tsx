@@ -23,7 +23,6 @@ const MainViewPage = () => {
               element={
                 <JournalPage>
                   <JournalContainer />
-                  <JournalEntryForm />
                 </JournalPage>
               }
             />
