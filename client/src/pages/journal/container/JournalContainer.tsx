@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useThoughtRecordContext } from '../../../context/thoughtRecordContext';
+import { useDataContext } from '../../../context/dataContext';
 import JournalEntry from '../components/JournalEntry';
 
 const JournalContainer = () => {
-  const { journalEntries } = useThoughtRecordContext();
+  const { journalEntries } = useDataContext();
   const [showJournalEntry, setShowJournalEntry] = useState(false);
 
   return (

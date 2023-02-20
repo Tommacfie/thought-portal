@@ -1,16 +1,6 @@
-import { useThoughtRecordContext } from '../../../context/thoughtRecordContext';
-import { EnumTabSelection } from '../../../types/enums';
+import { Link } from 'react-router-dom';
 
 const TabLink = ({ tab }: { tab: string }) => {
-  const { setTabSelection } = useThoughtRecordContext();
-  return (
-    <button
-      onClick={() => {
-        setTabSelection(EnumTabSelection[tab as keyof typeof EnumTabSelection]);
-      }}
-    >
-      {tab}
-    </button>
-  );
+  return <Link to={tab}>{tab}</Link>;
 };
 export default TabLink;

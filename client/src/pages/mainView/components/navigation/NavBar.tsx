@@ -5,7 +5,7 @@ import TabLink from '../TabLink';
 const NavBar = () => {
   return (
     <TabComponent>
-      {Object.keys(EnumTabSelection).map((key) => {
+      {Object.values(EnumTabSelection).map((key) => {
         return <TabLink key={key} tab={key} />;
       })}
     </TabComponent>

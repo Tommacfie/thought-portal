@@ -12,7 +12,7 @@ import { getJournalEntries, getThoughtRecords } from '../services/apiService';
 import { EnumTabSelection } from '../types/enums';
 import { JournalEntryType, ThoughtRecordType } from '../types/types';
 
-export interface ThoughtRecordContextType {
+export interface DataContextType {
   thoughtRecords: ThoughtRecordType[];
   setThoughtRecords: Dispatch<SetStateAction<ThoughtRecordType[]>>;
   journalEntries: JournalEntryType[];
@@ -21,7 +21,7 @@ export interface ThoughtRecordContextType {
   setTabSelection: Dispatch<SetStateAction<EnumTabSelection | undefined>>;
 }
 
-const ThoughtRecordContext = createContext<ThoughtRecordContextType>({
+const DataContext = createContext<DataContextType>({
   thoughtRecords: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setThoughtRecords: () => {},
@@ -33,9 +33,9 @@ const ThoughtRecordContext = createContext<ThoughtRecordContextType>({
   setTabSelection: () => {},
 });
 
-export default ThoughtRecordContext;
+export default DataContext;
 
-export const ThoughtRecordContextProvider = ({
+export const DataContextProvider = ({
   children,
 }: {
   children: ReactElement;
@@ -61,7 +61,7 @@ export const ThoughtRecordContextProvider = ({
   }, []);
 
   return (
-    <ThoughtRecordContext.Provider
+    <DataContext.Provider
       value={{
         thoughtRecords,
         setThoughtRecords,
@@ -72,10 +72,10 @@ export const ThoughtRecordContextProvider = ({
       }}
     >
       {children}
-    </ThoughtRecordContext.Provider>
+    </DataContext.Provider>
   );
 };
 
-export const useThoughtRecordContext = () => {
-  return useContext(ThoughtRecordContext);
+export const useDataContext = () => {
+  return useContext(DataContext);
 };

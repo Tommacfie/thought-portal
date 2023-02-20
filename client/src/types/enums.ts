@@ -9,7 +9,7 @@ export enum EnumThoughtRecordTablePlaceHolder {
 }
 
 export enum EnumTabSelection {
-  HOME = 'HOME',
-  JOURNALPAGE = 'JOURNALPAGE',
-  THOUGHTRECORDPAGE = 'THOUGHTRECORDPAGE',
+  HOME = 'home',
+  JOURNALPAGE = 'journalEntries',
+  THOUGHTRECORDPAGE = 'thoughtRecords',
 }
