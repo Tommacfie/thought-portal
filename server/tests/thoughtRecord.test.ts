@@ -29,7 +29,7 @@ const editedThoughtRecord = {
   alternativeThoughts: [],
 };
 
-describe('Get /thoughtRecords', () => {
+describe('Thought Record Controller', () => {
   it('should return all thought records', async () => {
     const response = await request(app).get('/thoughtRecords');
     expect(response.statusCode).toBe(200);
