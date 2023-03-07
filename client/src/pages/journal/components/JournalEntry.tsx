@@ -11,8 +11,8 @@ import JournalEntryFormFields from './JournalEntryFormFields';
 
 const JournalEntry = () => {
   const { id } = useParams();
-  const methods = useForm<CreateJournalEntryType>({
-    defaultValues: async () => await getJournalEntryById(id || ''),
+  const methods = useForm({
+    defaultValues: async () => await getJournalEntryById(id),
   });
   const navigate = useNavigate();
 

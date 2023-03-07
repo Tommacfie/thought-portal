@@ -35,7 +35,8 @@ export const getThoughtRecordById = async (id: string) => {
   }
 };
 
-export const getJournalEntryById = async (id: string) => {
+export const getJournalEntryById = async (id: string | undefined) => {
+  if (id == null) return;
   try {
     const response = await fetch(server + `/journalEntry?id=${id}`);
     const journalEntry = await response.json();
