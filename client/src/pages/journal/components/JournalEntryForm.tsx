@@ -24,9 +24,12 @@ const JournalEntryForm = () => {
   return (
     <FormProvider {...methods}>
       <form
-        className="flex flex-col justify-evenly items-center border py-10 h-1/2"
+        className="flex flex-col justify-evenly items-center border p-10 h-1/2"
         onSubmit={methods.handleSubmit(submissionHandler)}
       >
+        <button className="mr-auto" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
         <div className="text-center text-xl">Create a New Journal Entry</div>
         <JournalEntryFormFields readOnly={false} />
         <div className="flex w-full justify-evenly items-center">
