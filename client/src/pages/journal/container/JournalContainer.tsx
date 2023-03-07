@@ -12,8 +12,9 @@ const JournalContainer = () => {
             <Link
               to={`/journalEntries/${journalEntry._id}`}
               className="w-1/3 border text-center p-1 m-1"
+              key={journalEntry._id}
             >
-              <div key={journalEntry._id} className="flex justify-center">
+              <div className="flex justify-center">
                 <span className="mx-auto">{journalEntry.title}</span>
                 <span className="text-xs">
                   {new Date(journalEntry.createdAt).toDateString()}
