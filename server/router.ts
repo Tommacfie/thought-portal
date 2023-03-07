@@ -40,7 +40,7 @@ router.delete('/thoughtRecord', deleteThoughtRecord);
 
 // Journal Entries
 router.get('/journalEntries', getJournalEntries);
-router.get('/journalEntries', getJournalEntryById);
+router.get('/journalEntry', getJournalEntryById);
 router.put('/journalEntry', updateJournalEntry);
 router.post('/journalEntry', createJournalEntry);
 router.delete('/journalEntry', deleteJournalEntry);
