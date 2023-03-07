@@ -114,3 +114,18 @@ export const updateJournalEntryById = async (
     console.log('Error:', error);
   }
 };
+
+export const deleteThoughtRecord = async (id: string) => {
+  try {
+    const response = await fetch(server + `/journalEntry?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+    const updatedJournalEntry = await response.json();
+    return updatedJournalEntry;
+  } catch (error) {
+    console.log('Error:', error);
+  }
+};

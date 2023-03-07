@@ -4,11 +4,11 @@ import JournalEntry from '../models/journalEntry';
 export const getJournalEntries = async (_req: Request, res: Response) => {
   try {
     const journalEntries = await JournalEntry.find();
-    res.send(journalEntries).status(200);
+    res.status(200).send(journalEntries);
     return;
   } catch (error) {
     console.log('error: ', error);
-    res.send(error).status(500);
+    res.status(500).send(error);
     return;
   }
 };
@@ -19,14 +19,14 @@ export const getJournalEntryById = async (req: Request, res: Response) => {
     });
 
     if (!journalEntry) {
-      res.send('Journal Entry not found').status(404);
+      res.status(404).send('Journal Entry not found');
     } else {
-      res.send(journalEntry).status(200);
+      res.status(200).send(journalEntry);
     }
     return;
   } catch (error) {
     console.log('error: ', error);
-    res.send(error).status(500);
+    res.status(500).send(error);
     return;
   }
 };
@@ -34,11 +34,11 @@ export const getJournalEntryById = async (req: Request, res: Response) => {
 export const createJournalEntry = async (req: Request, res: Response) => {
   try {
     const newJournalEntry = await JournalEntry.create(req.body);
-    res.send(newJournalEntry).status(201);
+    res.status(201).send(newJournalEntry);
     return;
   } catch (error) {
     console.log('error: ', error);
-    res.send(error).status(500);
+    res.status(500).send(error);
     return;
   }
 };
@@ -52,11 +52,11 @@ export const updateJournalEntry = async (req: Request, res: Response) => {
       { ...req.body },
       { new: true }
     );
-    res.send(newJournalEntry).status(200);
+    res.status(200).send(newJournalEntry);
     return;
   } catch (error) {
     console.log('error: ', error);
-    res.send(error).status(500);
+    res.status(500).send(error);
     return;
   }
 };
@@ -67,10 +67,11 @@ export const deleteJournalEntry = async (req: Request, res: Response) => {
       _id: req.query.id,
     });
 
-    res.send(deletedJournalEntry).status(200);
+    res.status(200).send(deletedJournalEntry);
     return;
   } catch (error) {
     console.log('error: ', error);
+    res.status(500).send(error);
     return;
   }
 };
