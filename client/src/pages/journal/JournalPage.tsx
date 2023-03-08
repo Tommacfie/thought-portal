@@ -1,12 +1,11 @@
-import React from 'react';
-import JournalContainer from './container/JournalContainer';
+import { ReactElement } from 'react';
 
-const JournalPage = () => {
-  return (
-    <JournalContainer>
-      <div>JournalPage</div>
-    </JournalContainer>
-  );
+const JournalPage = ({
+  children,
+}: {
+  children: ReactElement | ReactElement[];
+}) => {
+  return <div className="w-full h-full border">{children}</div>;
 };
 
 export default JournalPage;

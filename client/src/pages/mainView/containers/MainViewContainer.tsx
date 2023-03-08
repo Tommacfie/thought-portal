@@ -5,6 +5,6 @@ const MainViewContainer = ({
 }: {
   children: ReactElement | ReactElement[];
 }) => {
-  return <>{children}</>;
+  return <div className="h-screen w-screen">{children}</div>;
 };
 export default MainViewContainer;

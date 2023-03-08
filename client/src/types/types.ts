@@ -16,4 +16,21 @@ export type ThoughtRecordType = {
   evidenceFor: [string];
   evidenceAgainst: [string];
   alternativeThoughts: [string];
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type JournalEntryType = {
+  _id: string;
+  title: string;
+  journalEntry: string;
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreateJournalEntryType = {
+  title: string;
+  journalEntry: string;
+  tags: string[];
 };

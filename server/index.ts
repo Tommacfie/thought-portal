@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import { PORT } from './config';
 
-const app = express();
+export const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(router);

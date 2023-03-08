@@ -7,3 +7,9 @@ export enum EnumThoughtRecordTablePlaceHolder {
   ALTERNATIVE_THOUGHTS = 'Ask yourself the questions in the Helpful Hints in Chapter 9 (p. 100) to generate alternative. or balanced thoughts. Write an alternative or balanced thought. Rate how much you believe each (0-100%), as alternative or balanced thought well as any (0-100%).',
   NEW_MOOD_RATING = 'Copy the moods from column 2. Rerate the intensity of each mood (0-100%), as well as any new moods.',
 }
+
+export enum EnumTabSelection {
+  HOME = 'home',
+  JOURNALPAGE = 'journalEntries',
+  THOUGHTRECORDPAGE = 'thoughtRecords',
+}

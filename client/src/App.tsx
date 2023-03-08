@@ -1,11 +1,11 @@
-import { ThoughtRecordContextProvider } from './context/thoughtRecordContext';
+import { DataContextProvider } from './context/dataContext';
 import MainViewPage from './pages/mainView/MainViewPage';
 
 const App = () => {
   return (
-    <ThoughtRecordContextProvider>
+    <DataContextProvider>
       <MainViewPage />
-    </ThoughtRecordContextProvider>
+    </DataContextProvider>
   );
 };
 
