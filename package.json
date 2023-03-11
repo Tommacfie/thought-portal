@@ -8,7 +8,8 @@
     "server":"cd server && npm run start",
     "client":"cd client && npm run start",
     "drop":"cd server && npm run drop",
-    "startDb":"brew services start mongodb-community"
+    "startMongoDB":"brew services start mongodb-community",
+    "stopMongoDB":"brew services stop mongodb-community"
   },
   "author": "Tom Macfie",
   "license": "ISC",
