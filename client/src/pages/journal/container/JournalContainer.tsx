@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDataContext } from '../../../context/dataContext';
-import { deleteThoughtRecord } from '../../../services/apiService';
+import { deleteJournalEntry } from '../../../services/apiService';
 
 const JournalContainer = () => {
   const { journalEntries } = useDataContext();
@@ -24,9 +24,7 @@ const JournalContainer = () => {
                 </span>
               </Link>
               <button
-                onClick={async () =>
-                  await deleteThoughtRecord(journalEntry._id)
-                }
+                onClick={async () => await deleteJournalEntry(journalEntry._id)}
                 className="mr-0"
               >
                 Delete

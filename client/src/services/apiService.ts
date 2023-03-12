@@ -35,8 +35,7 @@ export const getThoughtRecordById = async (id: string) => {
   }
 };
 
-export const getJournalEntryById = async (id: string | undefined) => {
-  if (id == null) return;
+export const getJournalEntryById = async (id: string) => {
   try {
     const response = await fetch(server + `/journalEntry?id=${id}`);
     const journalEntry = await response.json();
@@ -99,10 +98,11 @@ export const updateThoughtRecordById = async (
 };
 
 export const updateJournalEntryById = async (
+  id: string,
   journalEntryChanges: Partial<JournalEntryType>
 ) => {
   try {
-    const response = await fetch(server + '/journalEntry', {
+    const response = await fetch(server + `/journalEntry?id=${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -116,7 +116,7 @@ export const updateJournalEntryById = async (
   }
 };
 
-export const deleteThoughtRecord = async (id: string) => {
+export const deleteJournalEntry = async (id: string) => {
   try {
     const response = await fetch(server + `/journalEntry?id=${id}`, {
       method: 'DELETE',
