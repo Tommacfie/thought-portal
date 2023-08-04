@@ -24,7 +24,7 @@ export type MoodType = {
 };
 
 export type ThoughtRecordType = {
-  _id: string;
+  _id?: string;
   title: string;
   situation: string;
   moods: MoodType[];

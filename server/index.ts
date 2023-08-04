@@ -21,7 +21,7 @@ if (process.env.NODE_ENV != 'test') {
       // eslint-disable-next-line no-console
       console.log(error.message);
     })
-    .on('close', (message: any) => {
+    .on('close', (message: string) => {
       console.log(message);
     });
 }

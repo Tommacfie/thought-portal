@@ -2,12 +2,13 @@
   "name": "thought-portal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "npx kill-port 3000 && concurrently \"cd client && npm run start\" \"cd server && npm run start\"",
-    "server":"cd server && npm run start",
-    "client":"cd client && npm run start",
     "drop":"cd server && npm run drop",
+    "lint:server":"cd server && npx eslint . --fix && lint:prettier",
+    "lint:prettier":"cd server && prettier --write",
+    "start:all": "npx kill-port 3000 && concurrently \"cd client && npm run start\" \"cd server && npm run start\"",
+    "start:client":"cd client && npm run start",
+    "start:server":"cd server && npm run start",
     "startMongoDB":"brew services start mongodb-community",
     "stopMongoDB":"brew services stop mongodb-community"
   },
