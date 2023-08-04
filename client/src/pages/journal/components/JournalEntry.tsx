@@ -10,7 +10,8 @@ import { writeJournalEntryToFile } from '../helpers/writeJournalEntryToFile';
 import JournalEntryFormFields from './JournalEntryFormFields';
 
 const JournalEntry = () => {
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
+
   const methods = useForm({
     defaultValues: async () => await getJournalEntryById(id),
   });
@@ -22,7 +23,7 @@ const JournalEntry = () => {
   const submissionHandler: SubmitHandler<CreateJournalEntryType> = async (
     data
   ) => {
-    await updateJournalEntryById(data);
+    await updateJournalEntryById(id, data);
     if (saveCopy) {
       writeJournalEntryToFile(data);
     }
