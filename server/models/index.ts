@@ -9,8 +9,10 @@ mongoose.connect(`${DB}`, (error) => {
     console.log('error:', error);
     return;
   }
-  // eslint-disable-next-line no-console
-  console.log(`\n${new Date().toLocaleString()}:\n=> Connected to mongodb\n`);
+  if (process.env.NODE_ENV != 'test') {
+    // eslint-disable-next-line no-console
+    console.log(`\n${new Date().toLocaleString()}:\n=> Connected to mongodb\n`);
+  }
 });
 
 mongoose.connection.on('close', (error) => {
@@ -18,9 +20,11 @@ mongoose.connection.on('close', (error) => {
     console.log('error: ', error);
     return;
   }
-  console.log(
-    `\n${new Date().toLocaleString()}:\n=> Disconnected from mongodb\n`
-  );
+  if (process.env.NODE_ENV != 'test') {
+    console.log(
+      `\n${new Date().toLocaleString()}:\n=> Disconnected from mongodb\n`
+    );
+  }
 });
 
 export default mongoose;
