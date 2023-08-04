@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-if (process.env.NODE_ENV != 'TEST') {
+if (process.env.NODE_ENV != 'test') {
   app
     .listen(PORT, () => {
       // eslint-disable-next-line no-console

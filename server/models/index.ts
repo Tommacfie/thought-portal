@@ -9,7 +9,7 @@ mongoose.connect(`${DB}`, (error) => {
     console.log('error:', error);
     return;
   }
-  if (process.env.NODE_ENV != 'TEST') {
+  if (process.env.NODE_ENV != 'test') {
     // eslint-disable-next-line no-console
     console.log(`\n${new Date().toLocaleString()}:\n=> Connected to mongodb\n`);
   }
@@ -20,7 +20,7 @@ mongoose.connection.on('close', (error) => {
     console.log('error: ', error);
     return;
   }
-  if (process.env.NODE_ENV != 'TEST') {
+  if (process.env.NODE_ENV != 'test') {
     console.log(
       `\n${new Date().toLocaleString()}:\n=> Disconnected from mongodb\n`
     );
