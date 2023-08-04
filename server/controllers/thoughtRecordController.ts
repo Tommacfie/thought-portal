@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Mood from '../models/Mood';
+import Mood from '../models/mood';
 import ThoughtRecord from '../models/thoughtRecord';
 import { MoodType } from '../utils/types';
 

@@ -1,4 +1,5 @@
 import ThoughtRecord from '../../../models/thoughtRecord';
+import { ThoughtRecordType } from '../../types';
 
 export const thoughtRecords = [
   {
@@ -31,7 +32,7 @@ export const thoughtRecords = [
 ];
 
 Promise.all([
-  thoughtRecords.forEach(async (thoughtRecord: any) => {
+  thoughtRecords.forEach(async (thoughtRecord: ThoughtRecordType) => {
     await ThoughtRecord.create(thoughtRecord);
   }),
 ]);
