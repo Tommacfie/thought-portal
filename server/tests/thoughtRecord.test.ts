@@ -34,7 +34,6 @@ describe('Thought Record Controller', () => {
     const response = await request(app).get('/thoughtRecords');
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBeGreaterThan(0);
-    console.log(response);
   });
   it('should allow a user to create a thought record', async () => {
     const response = await request(app)
