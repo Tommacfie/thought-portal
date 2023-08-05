@@ -1,19 +1,19 @@
 export type UserType = {
-  _id: string;
+  _id?: string;
   name: string;
   email: string;
   password: string;
 };
 
 export type ThoughtType = {
-  _id: string;
+  _id?: string;
   title: string;
   body: string;
   tags: string[];
 };
 
 export type MoodType = {
-  _id: string;
+  _id?: string;
   name: string;
   description: string[];
   intensity: {
@@ -35,7 +35,7 @@ export type ThoughtRecordType = {
 };
 
 export type JournalEntryType = {
-  _id: string;
+  _id?: string;
   title: string;
   journalEntry: string;
   tags: string[];

@@ -1,9 +1,10 @@
-import Mongoose from '../../models/index';
+import mongoose from '../../models/index';
 
 (async () => {
   try {
-    await Mongoose.connection.dropDatabase();
-    await Mongoose.connection.close();
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
+    return;
   } catch (error) {
     return error;
   }
