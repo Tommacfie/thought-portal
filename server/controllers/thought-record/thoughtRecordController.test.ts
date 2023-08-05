@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../index';
 import { DB } from '../../config';
-import { ThoughtRecordType } from '../../utils/types';
+import { MoodType, ThoughtRecordType } from '../../utils/types';
 
 beforeAll(async () => {
   await mongoose.connect(`${DB}`);
@@ -11,10 +11,20 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
+const newMood: MoodType = {
+  name: 'Test Mood',
+  description: ['Test Mood Array for Thought Record'],
+  intensity: {
+    beforeThoughtRecord: 99,
+    afterThoughtRecord: 1,
+  },
+  tags: ['testmood'],
+};
+
 const newThoughtRecord = {
   title: 'Test Thought Record',
   situation: 'Testing environment',
-  moods: [],
+  moods: [newMood],
   automaticThoughts: [],
   evidenceFor: [],
   evidenceAgainst: [],
@@ -45,9 +55,14 @@ describe('Thought Record Controller', () => {
       .set('Accept', 'application/json');
 
     thoughtRecordID = response.body._id;
+    const mood = response.body.moods[0];
+
     expect(response.statusCode).toBe(201);
     expect(response.body.title).toBe('Test Thought Record');
     expect(response.body.situation).toBe('Testing environment');
+    expect(mood.name).toBe('Test Mood');
+    expect(mood.description[0]).toBe('Test Mood Array for Thought Record');
+    expect(mood.tags[0]).toBe('testmood');
   });
   it('should return a thought record by id', async () => {
     const response = await request(app).get(
