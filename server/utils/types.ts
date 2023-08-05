@@ -37,6 +37,6 @@ export type ThoughtRecordType = {
 export type JournalEntryType = {
   _id?: string;
   title: string;
-  journalEntry: string;
+  body: string;
   tags: string[];
 };

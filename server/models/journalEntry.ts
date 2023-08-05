@@ -5,7 +5,7 @@ import { JournalEntryType } from '../utils/types';
 const journalEntrySchema = new Schema<JournalEntryType>(
   {
     title: String,
-    journalEntry: String,
+    body: String,
     tags: [String],
   },
   { timestamps: true }
