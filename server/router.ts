@@ -5,22 +5,22 @@ import {
   createJournalEntry,
   deleteJournalEntry,
   updateJournalEntry,
-} from './controllers/journalEntryController';
-import { getMoods, createMood } from './controllers/moodController';
+} from './controllers/journal-entry/journalEntryController';
+import { getMoods, createMood } from './controllers/mood/moodController';
 import {
   createThoughtRecord,
   deleteThoughtRecord,
   getThoughtRecordById,
   getThoughtRecords,
   updateThoughtRecord,
-} from './controllers/thoughtRecordController';
+} from './controllers/thought-record/thoughtRecordController';
 import {
   getUsers,
   createUser,
   getUserById,
   deleteUser,
   updateUser,
-} from './controllers/userController';
+} from './controllers/user/userController';
 
 const router = Router({ strict: true });
 

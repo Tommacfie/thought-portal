@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import JournalEntry from '../models/journalEntry';
+import JournalEntry from '../../models/journalEntry';
 
 export const getJournalEntries = async (_req: Request, res: Response) => {
   try {
@@ -7,6 +7,7 @@ export const getJournalEntries = async (_req: Request, res: Response) => {
     res.status(200).send(journalEntries);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error: ', error);
     res.status(500).send(error);
     return;
@@ -25,6 +26,7 @@ export const getJournalEntryById = async (req: Request, res: Response) => {
     }
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error: ', error);
     res.status(500).send(error);
     return;
@@ -37,6 +39,7 @@ export const createJournalEntry = async (req: Request, res: Response) => {
     res.status(201).send(newJournalEntry);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error: ', error);
     res.status(500).send(error);
     return;
@@ -55,6 +58,7 @@ export const updateJournalEntry = async (req: Request, res: Response) => {
     res.status(200).send(newJournalEntry);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error: ', error);
     res.status(500).send(error);
     return;
@@ -70,6 +74,7 @@ export const deleteJournalEntry = async (req: Request, res: Response) => {
     res.status(200).send(deletedJournalEntry);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error: ', error);
     res.status(500).send(error);
     return;
