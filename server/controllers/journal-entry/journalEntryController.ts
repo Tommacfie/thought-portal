@@ -50,11 +50,12 @@ export const updateJournalEntry = async (req: Request, res: Response) => {
   try {
     const newJournalEntry = await JournalEntry.findOneAndUpdate(
       {
-        _id: req.body._id,
+        _id: req.query.id,
       },
       { ...req.body },
       { new: true }
     );
+
     res.status(200).send(newJournalEntry);
     return;
   } catch (error) {

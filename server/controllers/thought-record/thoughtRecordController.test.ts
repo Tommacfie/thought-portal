@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../index';
 import { DB } from '../../config';
+import { ThoughtRecordType } from '../../utils/types';
 
 beforeAll(async () => {
   await mongoose.connect(`${DB}`);
@@ -95,11 +96,18 @@ describe('Thought Record Controller', () => {
     const deleteThoughtRecord = await request(app)
       .delete('/thoughtRecord')
       .query({ id: createdThoughtRecordToDeleteId })
-      .send(editedThoughtRecord)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json');
 
     expect(deleteThoughtRecord.statusCode).toBe(200);
     expect(deleteThoughtRecord.body.title).toBe('Test Thought Record');
+
+    // get all journal entries and check that entry has been deleted
+    const response = await request(app).get('/thoughtRecords');
+    const thoughtRecordStillExists = response.body.some(
+      (thoughtRecord: ThoughtRecordType) =>
+        thoughtRecord._id === createdThoughtRecordToDeleteId
+    );
+    expect(thoughtRecordStillExists).toBe(false);
   });
 });
