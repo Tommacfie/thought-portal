@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
-import { app } from '../index';
-import { DB } from '../config';
+import { app } from '../../index';
+import { DB } from '../../config';
 
 beforeAll(async () => {
   await mongoose.connect(`${DB}`);

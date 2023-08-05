@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Mood from '../models/mood';
+import Mood from '../../models/mood';
 
 export const getMoods = async (_req: Request, res: Response) => {
   try {
@@ -7,6 +7,7 @@ export const getMoods = async (_req: Request, res: Response) => {
     res.send(moods).status(200);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error:', error);
     res.send(error).status(500);
     return;
@@ -19,6 +20,7 @@ export const createMood = async (req: Request, res: Response) => {
     res.send(newMood).status(201);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error:', error);
     res.send(error).status(500);
     return;
@@ -37,6 +39,7 @@ export const updateMood = async (req: Request, res: Response) => {
     res.send(updatedMood).status(201);
     return;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('error:', error);
     res.send(error).status(500);
     return;
