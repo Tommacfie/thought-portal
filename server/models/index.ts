@@ -1,28 +1,29 @@
 /* eslint-disable no-console */
 import Mongoose from 'mongoose';
 import { DB } from '../config';
+import { log, logWithDate } from '../utils/helpers/logging';
 
 const mongoose = Mongoose;
 
+mongoose.set('strictQuery', true);
+
 mongoose.connect(`${DB}`, (error) => {
   if (error) {
-    console.log('error:', error);
+    log('error: ' + error);
     return;
   }
   if (process.env.NODE_ENV != 'test') {
-    console.log(`\n${new Date().toLocaleString()}:\n=> Connected to mongodb\n`);
+    logWithDate('Connected to mongodb');
   }
 });
 
 mongoose.connection.on('close', (error) => {
   if (error) {
-    console.log('error: ', error);
+    log('error: ' + error);
     return;
   }
   if (process.env.NODE_ENV != 'test') {
-    console.log(
-      `\n${new Date().toLocaleString()}:\n=> Disconnected from mongodb\n`
-    );
+    logWithDate('Disconnected from mongodb');
   }
 });
 
