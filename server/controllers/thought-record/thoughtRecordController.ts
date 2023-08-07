@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Mood from '../../models/mood';
 import ThoughtRecord from '../../models/thoughtRecord';
 import { MoodType } from '../../utils/types';
+import { consoleLog } from '../../utils/helpers/logging';
 
 export const getThoughtRecords = async (_req: Request, res: Response) => {
   try {
@@ -9,8 +10,7 @@ export const getThoughtRecords = async (_req: Request, res: Response) => {
     res.status(200).send(thoughtRecords);
     return;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -28,8 +28,7 @@ export const getThoughtRecordById = async (req: Request, res: Response) => {
     }
     return;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -47,8 +46,7 @@ export const createThoughtRecord = async (req: Request, res: Response) => {
     res.status(201).send(newThoughtRecord);
     return;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -84,8 +82,7 @@ export const updateThoughtRecord = async (req: Request, res: Response) => {
     res.status(200).send(newThoughtRecord);
     return;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -110,8 +107,7 @@ export const deleteThoughtRecord = async (req: Request, res: Response) => {
     res.status(200).send(deletedThoughtRecord);
     return;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', error);
+    consoleLog('error: ' + error);
     return;
   }
 };

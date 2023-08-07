@@ -3,6 +3,7 @@ import router from './router';
 import cors from 'cors';
 
 import { PORT } from './config';
+import { consoleLog, logWithDate } from './utils/helpers/logging';
 
 export const app = express();
 app.use(cors());
@@ -12,16 +13,14 @@ app.use(router);
 if (process.env.NODE_ENV != 'test') {
   app
     .listen(PORT, () => {
-      // eslint-disable-next-line no-console
-      console.log(
-        `\n${new Date().toLocaleString()}:\n=> Backend server started and running at http://localhost:${PORT}`
+      logWithDate(
+        `Backend server started and running at http://localhost:${PORT}`
       );
     })
     .on('error', (error) => {
-      // eslint-disable-next-line no-console
-      console.log(error.message);
+      consoleLog(error.message);
     })
     .on('close', (message: string) => {
-      console.log(message);
+      consoleLog(message);
     });
 }
