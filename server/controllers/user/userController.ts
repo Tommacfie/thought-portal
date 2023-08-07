@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import User from '../../models/user';
-import { log } from '../../utils/helpers/logging';
+import { consoleLog } from '../../utils/helpers/logging';
 
 export const getUsers = async (_req: Request, res: Response) => {
   try {
@@ -9,7 +9,7 @@ export const getUsers = async (_req: Request, res: Response) => {
     res.send(users).status(200);
     return;
   } catch (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -24,7 +24,7 @@ export const getUserById = async (req: Request, res: Response) => {
     }
     return;
   } catch (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -36,7 +36,7 @@ export const createUser = async (req: Request, res: Response) => {
     res.send(newUser).status(201);
     return;
   } catch (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -52,7 +52,7 @@ export const updateUser = async (req: Request, res: Response) => {
     res.send(updatedUser).status(200);
     return;
   } catch (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }
@@ -64,7 +64,7 @@ export const deleteUser = async (req: Request, res: Response) => {
     res.send(deletedUser).status(200);
     return;
   } catch (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     res.send(error).status(500);
     return;
   }

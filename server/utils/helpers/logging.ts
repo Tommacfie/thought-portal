@@ -8,7 +8,7 @@ export const logWithDate = (message: string) => {
   return;
 };
 
-export const log = (message: string) => {
+export const consoleLog = (message: string) => {
   console.log(message);
   return;
 };

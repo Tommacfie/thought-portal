@@ -3,7 +3,7 @@ import router from './router';
 import cors from 'cors';
 
 import { PORT } from './config';
-import { log, logWithDate } from './utils/helpers/logging';
+import { consoleLog, logWithDate } from './utils/helpers/logging';
 
 export const app = express();
 app.use(cors());
@@ -18,9 +18,9 @@ if (process.env.NODE_ENV != 'test') {
       );
     })
     .on('error', (error) => {
-      log(error.message);
+      consoleLog(error.message);
     })
     .on('close', (message: string) => {
-      log(message);
+      consoleLog(message);
     });
 }

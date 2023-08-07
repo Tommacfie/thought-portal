@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import Mongoose from 'mongoose';
 import { DB } from '../config';
-import { log, logWithDate } from '../utils/helpers/logging';
+import { consoleLog, logWithDate } from '../utils/helpers/logging';
 
 const mongoose = Mongoose;
 
@@ -9,7 +9,7 @@ mongoose.set('strictQuery', true);
 
 mongoose.connect(`${DB}`, (error) => {
   if (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     return;
   }
   if (process.env.NODE_ENV != 'test') {
@@ -19,7 +19,7 @@ mongoose.connect(`${DB}`, (error) => {
 
 mongoose.connection.on('close', (error) => {
   if (error) {
-    log('error: ' + error);
+    consoleLog('error: ' + error);
     return;
   }
   if (process.env.NODE_ENV != 'test') {
